@@ -25,6 +25,7 @@ export class OrderRepository {
   }
 
   async updateStatus(productId: string, status: OrderStatus) {
+    console.log(`\nTrying to update order to ${status}`);
     return this.orderModel.updateOne({ productId }, { $set: { status } });
   }
 }

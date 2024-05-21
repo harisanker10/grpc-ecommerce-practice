@@ -16,6 +16,7 @@ export class OrdersService {
   ) {}
 
   async create(order: CreateOrderDto) {
+    console.log('from order service', { order });
     const createdOrder = await this.orderRepository.create(order);
     this.kafkaClient.emit('order_created', new OrderEvent(createdOrder));
     return createdOrder;

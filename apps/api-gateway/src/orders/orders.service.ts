@@ -18,7 +18,9 @@ export class OrdersService implements OnModuleInit {
     console.log(this.orderService);
   }
 
-  create(order: CreateOrderDto) {
+  create(orderDto: CreateOrderDto, id: string) {
+    const order = { ...orderDto, userId: id };
+    console.log({ order });
     return this.orderService.createOrder(order);
   }
 
@@ -27,6 +29,7 @@ export class OrdersService implements OnModuleInit {
   }
 
   findByUserId(id) {
+    console.log({ id });
     return this.orderService.findOrdersOfUser({ userId: id });
   }
 }

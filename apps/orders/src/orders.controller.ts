@@ -12,6 +12,7 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   createOrder(createOrderDto: CreateOrderDto) {
+    console.log({ createOrderDto });
     return this.ordersService.create(createOrderDto);
   }
 

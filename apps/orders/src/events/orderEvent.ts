@@ -1,4 +1,4 @@
-import { Order, OrderDoc } from 'apps/orders/src/schema/orders.schema';
+import { Order, OrderDoc } from '../schema/orders.schema';
 
 export enum orderTopic {
   orderCreated = 'order_created',
@@ -7,7 +7,7 @@ export enum orderTopic {
 }
 
 export class OrderEvent {
-  constructor(public readonly data: OrderDoc) {}
+  constructor(public readonly data: OrderDoc | Order) {}
 
   toString() {
     return JSON.stringify(this.data);

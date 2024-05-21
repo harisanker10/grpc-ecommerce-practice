@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package orders;
+
+message Order {
+  string id = 1;
+  string userId = 2;
+  string productId = 3;
+  string status = 4;
+  float amount = 5;
+}
+
+service OrderService {
+  rpc CreateOrder (CreateOrderDto) returns (Order) {}
+  rpc FindAllOrders (Empty) returns (Orders) {}
+  rpc FindOrdersOfUser (UserOrdersDto) returns (Orders) {}
+}
+
+message CreateOrderDto {
+  string userId = 1;
+  string productId = 2;
+  float amount = 3;
+}
+
+message UserOrdersDto {
+  string userId = 1;
+}
+
+message Orders {
+  repeated Order orders = 1;
+}
+
+message Empty {}
